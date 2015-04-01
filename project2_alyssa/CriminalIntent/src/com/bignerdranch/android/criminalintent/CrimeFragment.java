@@ -33,11 +33,12 @@ public class CrimeFragment extends Fragment {
     private static final String DIALOG_IMAGE = "image";
     private static final int REQUEST_DATE = 0;
     private static final int REQUEST_PHOTO = 1;
-    public static int i_photo = 0;
+    public static int i_photo = -1;
 
     Crime mCrime;
     EditText mTitleField;
     Button mDateButton;
+    Button deleteButton;
     CheckBox mSolvedCheckBox;
     ImageButton mPhotoButton;
     ImageView mPhotoView;
@@ -95,6 +96,8 @@ public class CrimeFragment extends Fragment {
         });
         
         mDateButton = (Button)v.findViewById(R.id.crime_date);
+        deleteButton = (Button)v.findViewById(R.id.delete_button);
+
         updateDate();
         mDateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -106,7 +109,17 @@ public class CrimeFragment extends Fragment {
                 dialog.show(fm, DIALOG_DATE);
             }
         });
-        
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                PictureUtils.cleanImageView(mPhotoView);
+                PictureUtils.cleanImageView(mPhotoView1);
+                PictureUtils.cleanImageView(mPhotoView2);
+                PictureUtils.cleanImageView(mPhotoView3);
+                i_photo = -1;
+            }
+        });
+
         mSolvedCheckBox = (CheckBox)v.findViewById(R.id.crime_solved);
         mSolvedCheckBox.setChecked(mCrime.isSolved());
         mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -193,7 +206,7 @@ public class CrimeFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
-        PictureUtils.cleanImageView(mPhotoView);
+        //PictureUtils.cleanImageView(mPhotoView); Removed this line
     }
 
     
