@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Trev/Downloads/android-step-counter-master/build/intermediates/exploded-aar/com.google.android.gms/play-services/3.1.36/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7421dcb3ed9db47a59ec618e2398f0df65c2d480">
+        <dex dex="/Users/Trev/Downloads/android-step-counter-master/build/intermediates/pre-dexed/debug/classes-662e3c5660179184f42d42f1b72e062ba543f8c2.jar" />
+    </item>
+    <item
+        jar="/Users/Trev/Library/Android/sdk/extras/android/m2repository/com/android/support/support-v4/13.0.0/support-v4-13.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3fe75433da602500cc71fcc1c46e5550291dd45d">
+        <dex dex="/Users/Trev/Downloads/android-step-counter-master/build/intermediates/pre-dexed/debug/support-v4-13.0.0-8c08e806fded4c196d90d4f143d8d3eff74d0aba.jar" />
+    </item>
+
+</items>

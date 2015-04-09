@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <fragment
+    android:layout_width="260dp"
+    android:layout_height="260dp"
+    android:name="com.google.android.gms.maps.MapFragment"
+    android:id="@+id/map" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Segment 1 steps:"
+                android:id="@+id/segmentLabel1"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/segmentSteps1"
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Segment 2 steps:"
+                android:id="@+id/segmentLabel2"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/segmentSteps2"
+                android:layout_column="1"
+                android:autoText="false"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Segment 3 steps:"
+                android:id="@+id/segmentLabel3"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/segmentSteps3"
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Segment 4 steps:"
+                android:id="@+id/segmentLabel4"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/segmentSteps4"
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Segment 5 steps:"
+                android:id="@+id/segmentLabel5"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/segmentSteps5"
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Segment 6 steps:"
+                android:id="@+id/segmentLabel6"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/segmentSteps6"
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Segment 7 steps:"
+                android:id="@+id/segmentLabel7"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/segmentSteps7"
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Segment 8 steps:"
+                android:id="@+id/segmentLabel8"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/segmentSteps8"
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:weightSum="3.0"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Total Steps:"
+                android:id="@+id/totalLabel"
+                android:layout_column="0"
+                android:layout_gravity="right"
+                android:layout_weight="2.0" />
+
+            <TextView
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text=""
+                android:id="@+id/totalSteps"
+                android:layout_column="1"
+                android:layout_weight="1.0"
+                android:layout_gravity="left"
+                android:layout_marginLeft="4dp" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
+
