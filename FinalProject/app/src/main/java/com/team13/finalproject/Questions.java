@@ -1,6 +1,7 @@
 package com.team13.finalproject;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,12 +13,14 @@ import android.widget.ListView;
 
 public class Questions extends ActionBarActivity {
 
+    public static final String QUESTION_ID = "com.team13.FinalProject.questionID";
     public static final String QUESTION_SELECTED = "com.team13.FinalProject.questionSelected";
 
-    private final Question[] questions = {
-            new Question("Minimum required SDK version?", 3),
-            new Question("How are apps localized?", 1)
-    };
+    private DataAdapter adapter;
+
+    private long discussionID;
+
+    private final DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +29,11 @@ public class Questions extends ActionBarActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            discussionID = extras.getLong(Discussions.DISCUSSION_ID);
             setTitle(extras.getString(Discussions.DISCUSSION_SELECTED));
         }
 
-        ListAdapter adapter = new ListAdapter(this, questions);
+        adapter = new DataAdapter(this, Question.getCursor(helper.getDb(), discussionID), Question.getViewBinder());
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
@@ -41,13 +45,22 @@ public class Questions extends ActionBarActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int index, long id) {
                 Intent intent = new Intent(that, Answers.class);
-                TwoItemListable item = (TwoItemListable) adapterView.getItemAtPosition(index);
-                intent.putExtra(QUESTION_SELECTED, item.getValue());
+                Question item = new Question((Cursor) adapterView.getItemAtPosition(index));
+                intent.putExtra(QUESTION_ID, item.id);
+                intent.putExtra(QUESTION_SELECTED, item.question);
                 startActivity(intent);
             }
         });
     }
 
+    private void onRefresh() {
+
+    }
+
+    private void onUpdate() {
+        adapter.changeCursor(Question.getCursor(helper.getDb(), discussionID));
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -63,8 +76,18 @@ public class Questions extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         switch(item.getItemId()) {
             case R.id.action_add:
+
+                adapter.showAddDialog(this, "Enter your question", new DataAdapter.OnAddItemListener() {
+                    public void onAddItem(String input) {
+                        Question.make(helper, input, discussionID);
+                        onUpdate();
+                    }
+                });
+
                 return true;
             case R.id.action_refresh:
+                onRefresh();
+                onUpdate();
                 return true;
         }
 

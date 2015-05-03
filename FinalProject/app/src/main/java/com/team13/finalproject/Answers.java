@@ -6,17 +6,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import java.util.Calendar;
-
 
 public class Answers extends ActionBarActivity {
 
-    private final Answer[] answers = {
-            new Answer("It's up to you.", Calendar.getInstance()),
-            new Answer("Level 1!", Calendar.getInstance()),
-            new Answer("No later than 19, really", Calendar.getInstance()),
-            new Answer("Check the Android version usage stats", Calendar.getInstance())
-    };
+    private DataAdapter adapter;
+
+    private long questionID;
+
+    private final DatabaseHelper helper = new DatabaseHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +22,24 @@ public class Answers extends ActionBarActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            questionID = extras.getLong(Questions.QUESTION_ID);
             setTitle(extras.getString(Questions.QUESTION_SELECTED));
         }
 
-        ListAdapter adapter = new ListAdapter(this, answers);
+        adapter = new DataAdapter(this, Answer.getCursor(helper.getDb(), questionID), Answer.getViewBinder());
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
     }
 
+    private void onRefresh() {
+
+    }
+
+    private void onUpdate() {
+        adapter.changeCursor(Answer.getCursor(helper.getDb(), questionID));
+        adapter.notifyDataSetChanged();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,9 +54,23 @@ public class Answers extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         switch(item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
             case R.id.action_add:
+
+                adapter.showAddDialog(this, "Enter your answer", new DataAdapter.OnAddItemListener() {
+                    public void onAddItem(String input) {
+                        Answer.make(helper, input, questionID);
+                        onUpdate();
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
                 return true;
             case R.id.action_refresh:
+                onRefresh();
+                onUpdate();
                 return true;
         }
 
