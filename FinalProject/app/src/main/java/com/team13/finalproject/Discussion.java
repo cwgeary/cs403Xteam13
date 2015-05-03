@@ -2,10 +2,12 @@ package com.team13.finalproject;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -45,7 +47,7 @@ public class Discussion implements BaseColumns {
     }
 
     // For listing Discussions on the screen
-    public static BindTwoLineCursor getViewBinder() {
+    public static BindTwoLineCursor getViewBinder(final SQLiteDatabase db) {
         return new BindTwoLineCursor() {
             @Override
             public void bindView(View view, Cursor cursor) {
@@ -57,7 +59,11 @@ public class Discussion implements BaseColumns {
                 Calendar date = Calendar.getInstance();
                 date.setTimeInMillis(cursor.getLong(2));
 
-                descriptionTextView.setText(new SimpleDateFormat("'Started on' M/d 'at' h:mm").format(date.getTime()));
+                long numQuestions = DatabaseUtils.queryNumEntries(db, Question.TABLE_NAME, Question.COLUMN_DISCUSSION_ID + " = " + cursor.getLong(0));
+
+                String format = "'Started on' M/d, '" + numQuestions + " question" + (numQuestions == 1 ? "" : "s") + " asked'";
+
+                descriptionTextView.setText(new SimpleDateFormat(format).format(date.getTime()));
             }
         };
     }

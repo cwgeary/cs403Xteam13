@@ -53,7 +53,7 @@ public class Discussions extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discussions);
 
-        adapter = new DataAdapter(this, Discussion.getCursor(helper.getDb()), Discussion.getViewBinder());
+        adapter = new DataAdapter(this, Discussion.getCursor(helper.getDb()), Discussion.getViewBinder(helper.getDb()));
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);

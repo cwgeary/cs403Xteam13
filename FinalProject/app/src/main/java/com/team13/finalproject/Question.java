@@ -2,6 +2,7 @@ package com.team13.finalproject;
 
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 import android.view.View;
@@ -49,7 +50,7 @@ public class Question implements BaseColumns {
     }
 
     // For listing Questions on the screen
-    public static BindTwoLineCursor getViewBinder() {
+    public static BindTwoLineCursor getViewBinder(final SQLiteDatabase db) {
         return new BindTwoLineCursor() {
             @Override
             public void bindView(View view, Cursor cursor) {
@@ -58,10 +59,9 @@ public class Question implements BaseColumns {
 
                 valueTextView.setText(cursor.getString(1));
 
-                Calendar date = Calendar.getInstance();
-                date.setTimeInMillis(cursor.getLong(2));
+                long numAnswers = DatabaseUtils.queryNumEntries(db, Answer.TABLE_NAME, Answer.COLUMN_QUESTION_ID + " = " + cursor.getLong(0));
 
-                descriptionTextView.setText(new SimpleDateFormat("'Asked on' M/d 'at' h:mm").format(date.getTime()));
+                descriptionTextView.setText(numAnswers + " answer" + (numAnswers == 1 ? "" : "s") + " submitted");
             }
         };
     }

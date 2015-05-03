@@ -33,7 +33,7 @@ public class Questions extends ActionBarActivity {
             setTitle(extras.getString(Discussions.DISCUSSION_SELECTED));
         }
 
-        adapter = new DataAdapter(this, Question.getCursor(helper.getDb(), discussionID), Question.getViewBinder());
+        adapter = new DataAdapter(this, Question.getCursor(helper.getDb(), discussionID), Question.getViewBinder(helper.getDb()));
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
