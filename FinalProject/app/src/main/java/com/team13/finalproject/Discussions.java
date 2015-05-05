@@ -2,8 +2,8 @@ package com.team13.finalproject;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +17,7 @@ public class Discussions extends ActionBarActivity {
     public static final String DISCUSSION_SELECTED = "com.team13.FinalProject.discussionSelected";
 
     private DataAdapter adapter;
+    private final WiForum wiforum = null;
 
     private final DatabaseHelper helper = new DatabaseHelper(this);
 
@@ -48,12 +49,14 @@ public class Discussions extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
         onRefresh();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_discussions);
 
         adapter = new DataAdapter(this, Discussion.getCursor(helper.getDb()), Discussion.getViewBinder(helper.getDb()));
+        //ArrayAdapter<String> channelListAdapter = new ArrayAdapter<String>(this, android.R.layout.test_list_item);
 
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
@@ -102,6 +105,9 @@ public class Discussions extends ActionBarActivity {
                 adapter.showAddDialog(this, "Name your new discussion", new DataAdapter.OnAddItemListener() {
                     public void onAddItem(String input) {
                         Discussion.make(helper, input);
+                        //wiforum.useSetChannelName(input);
+                        //wiforum.useJoinChannel();
+                        //wiforum.hostStartChannel();
                         onUpdate();
                     }
                 });
