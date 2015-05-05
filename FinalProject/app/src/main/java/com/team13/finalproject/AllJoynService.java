@@ -16,7 +16,6 @@ package com.team13.finalproject;
  *    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
@@ -65,15 +64,15 @@ public class AllJoynService extends Service implements Observer {
         wiforum = (WiForum) getApplication();
         wiforum.addObserver(this);
 
-        CharSequence title = "WiForum";
-        CharSequence message = "WiForum";
-        Intent intent = new Intent(this, Discussions.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
+        //CharSequence title = "WiForum";
+        //CharSequence message = "WiForum";
+        //Intent intent = new Intent(this, Discussions.class);
+        //PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         //Notification notification = new Notification(R.drawable.icon, null, System.currentTimeMillis());
         //notification.setLatestEventInfo(this, title, message, pendingIntent);
         //notification.flags |= Notification.DEFAULT_SOUND | Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
 
-        Log.i(TAG, "onCreate(): startForeground()");
+        //Log.i(TAG, "onCreate(): startForeground()");
         //startForeground(NOTIFICATION_ID, notification);
 
         /*
@@ -82,8 +81,8 @@ public class AllJoynService extends Service implements Observer {
          * remote channel instances in the background while the rest of the app
          * is starting up.
          */
-        mBackgroundHandler.connect();
-        mBackgroundHandler.startDiscovery();
+       // mBackgroundHandler.connect();
+        ///mBackgroundHandler.startDiscovery();
     }
 
     private static final int NOTIFICATION_ID = 0xdefaced;
